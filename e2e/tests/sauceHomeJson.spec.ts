@@ -8,7 +8,7 @@ loginData.forEach((data) =>
   test.describe('SauceDemo Homepage Login with Json Data', () => 
   {
       test(`Login Tests for ${data.username}`, async ({ page }) => {
-          await page.goto('https://www.saucedemo.com/');
+          await page.goto(`${process.env.BaseURL}`);
         
           // Expect a title "to contain" a substring.
           await expect(page).toHaveTitle(/Swag Labs/);

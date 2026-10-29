@@ -14,7 +14,7 @@ test.describe('Playwright Homepage Title Compare', () => {
 test.describe('Playwright Homepage Verifying Installation Header', () => {
   console.log('Test case 2 started.....')  
   test('get started link', async ({ page }) => {
-      await page.goto('/');
+      await page.goto('https://playwright.dev/');
 
       // Click the get started link.
       await page.getByRole('link', { name: 'Get started' }).click();
