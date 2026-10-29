@@ -8,9 +8,9 @@ declare const process: {
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+import dotenv from 'dotenv';
+import path from 'path';
+dotenv.config({ path: path.resolve(__dirname, 'env/.env') });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -24,9 +24,9 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 1 : 1,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 2 : 2,
+  workers: process.env.CI ? 3 : 3,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [['html'],['blob'],['line']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
@@ -36,7 +36,8 @@ export default defineConfig({
     trace: 'on',
     screenshot: 'on',
     video: 'on',
-    baseURL: 'https://playwright.dev',
+    headless: false,
+    //baseURL: 'https://saucedemo.com/',
   },
 
   /* Configure projects for major browsers */
